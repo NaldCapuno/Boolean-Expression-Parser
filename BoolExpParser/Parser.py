@@ -8,16 +8,16 @@ def lexer(expression):
         if expression[position] == " ":
             position += 1
     
-        elif expression[position].isalnum() and position < len(expression)-1  and (expression[position+1].isalnum() or expression[position+1] == "!" or expression[position+1] == "("):
+        elif (expression[position].isalpha() or expression[position] == ")") and position < len(expression)-1  and (expression[position+1].isalnum() or expression[position+1] == "!" or expression[position+1] == "("):
             tokens.append(expression[position])
             tokens.append("&")
             position += 1
 
-        elif expression[position].isalnum():
+        elif expression[position].isalpha():
             tokens.append(expression[position])
             position += 1
 
-        elif expression[position] in "()+|*&!~":
+        elif expression[position] in "!+*~|&()":
             tokens.append(expression[position])
             position += 1
             
@@ -26,7 +26,7 @@ def lexer(expression):
 def parser(tokens):
     exp_for_simp = []
     for token in tokens:
-        if token.isalnum():
+        if token.isalpha():
             exp_for_simp.append(token)
 
         elif token == "!":
@@ -38,19 +38,7 @@ def parser(tokens):
         elif token == "*":
             exp_for_simp.append("&")
 
-        elif token == "~":
-            exp_for_simp.append(token)
-
-        elif token == "|":
-            exp_for_simp.append(token)
-
-        elif token == "&":
-            exp_for_simp.append(token)
-
-        elif token == "(":
-            exp_for_simp.append(token)
-
-        elif token == ")":
+        elif token in "~|&()":
             exp_for_simp.append(token)
 
     exp_for_simp = ''.join(exp_for_simp)
