@@ -17,26 +17,10 @@ def lexer(expression):
             tokens.append(expression[position])
             position += 1
 
-        elif expression[position] == "(":
+        elif expression[position] in "()+|*&!~":
             tokens.append(expression[position])
             position += 1
-
-        elif expression[position] == ")":
-            tokens.append(expression[position])
-            position += 1
-
-        elif expression[position] == "+" or expression[position] == "|":
-            tokens.append(expression[position])
-            position += 1
-
-        elif expression[position] == "*" or expression[position] == "&":
-            tokens.append(expression[position])
-            position += 1
-
-        elif expression[position] == "!" or expression[position] == "~":
-            tokens.append(expression[position])
-            position += 1
-
+            
     return tokens
 
 def parser(tokens):
