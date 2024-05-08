@@ -1,5 +1,5 @@
 from sympy.logic import simplify_logic
-import time, os
+import tkinter as tk
 
 def lexer(expression):
     tokens = []
@@ -8,7 +8,7 @@ def lexer(expression):
         if expression[position] == " ":
             position += 1
     
-        elif (expression[position].isalpha() or expression[position] == ")") and position < len(expression)-1  and (expression[position+1].isalnum() or expression[position+1] == "!" or expression[position+1] == "("):
+        elif (expression[position].isalpha() or expression[position] == ")") and position < len(expression)-1  and (expression[position+1].isalpha() or expression[position+1] == "!" or expression[position+1] == "("):
             tokens.append(expression[position])
             tokens.append("&")
             position += 1
@@ -17,7 +17,7 @@ def lexer(expression):
             tokens.append(expression[position])
             position += 1
 
-        elif expression[position] in "!+*~|&()":
+        elif expression[position] in "01!+*~|&()":
             tokens.append(expression[position])
             position += 1
             
@@ -26,7 +26,10 @@ def lexer(expression):
 def parser(tokens):
     exp_for_simp = []
     for token in tokens:
-        if token.isalpha():
+        if token == False or token == True:
+            exp_for_simp.append(token)
+        
+        elif token.isalpha():
             exp_for_simp.append(token)
 
         elif token == "!":
@@ -38,22 +41,55 @@ def parser(tokens):
         elif token == "*":
             exp_for_simp.append("&")
 
+        elif token == "0":
+            exp_for_simp.append("False")
+
+        elif token == "1":
+            exp_for_simp.append("True")
+
         elif token in "~|&()":
             exp_for_simp.append(token)
 
     exp_for_simp = ''.join(exp_for_simp)
     return simplify_logic(exp_for_simp)
 
-if __name__ == "__main__":
-    while True:
-        os.system('cls')
-        print("Boolean Expression Parser\n")
-        expression = input("Enter Boolean Expression (Leave blank to exit): ")
-        if expression == "":
-            print("Exiting...")
-            time.sleep(1)
-            break
+def parse_expression():
+    expression = entry.get()
+    result.config(state='normal')
+    result.delete(1.0, tk.END)
+
+    if expression:
         tokens = lexer(expression)
-        simplified_exp = parser(tokens)
-        print(f"Simplified Expression: {simplified_exp}\n")
-        input("Press Enter to parse your next expression...")
+        parsed_expression = parser(tokens)
+        if parsed_expression == True:
+            result.insert(tk.END, f'1')
+        elif parsed_expression == False:
+            result.insert(tk.END, f'0')
+        else:
+            result.insert(tk.END, f'{parsed_expression}')
+
+    else:
+        result.insert(tk.END, f'Invalid Expression!')
+
+    result.config(state='disabled')
+
+if __name__ == "__main__":
+    main = tk.Tk()
+    main.title("Boolean Expression Parser")
+
+    entry_label = tk.Label(main, text="Expression: ")
+    entry_label.grid(column=0, row=0, padx=10, pady=10)
+
+    entry = tk.Entry(main, width=27)
+    entry.grid(column=1, row=0)
+
+    parse_button = tk.Button(main, text="Parse", command=parse_expression)
+    parse_button.grid(column=2, row=0, padx=10, pady=10)
+
+    result_label = tk.Label(main, text="Result: ")
+    result_label.grid(column=0, row=2, columnspan=3, padx=10)
+
+    result = tk.Text(main, width=36, height=1, state='disabled')
+    result.grid(column=0, row=3, columnspan=3, padx=10, pady=10)
+
+    main.mainloop()
