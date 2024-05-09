@@ -26,10 +26,7 @@ def lexer(expression):
 def parser(tokens):
     exp_for_simp = []
     for token in tokens:
-        if token == False or token == True:
-            exp_for_simp.append(token)
-        
-        elif token.isalpha():
+        if token.isalpha():
             exp_for_simp.append(token)
 
         elif token == "!":
