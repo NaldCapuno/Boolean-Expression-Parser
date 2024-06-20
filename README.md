@@ -31,4 +31,9 @@ python BoolExpParser/Parser.py
 This will launch the Tkinter GUI. Enter your boolean expression in the input field and click the "Simplify" button to see the simplified result.
 
 **Example**
+
 For example, if you input the expression (A & B) | (A & ~B), the program will simplify it to just A.
+
+**Screenshot**
+
+![GUI Screenshot](images/gui-screenshot.png)
