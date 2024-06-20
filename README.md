@@ -8,7 +8,7 @@ This Python program simplifies boolean expressions using the SymPy library and p
 ## How to Use
 **Prerequisites**
 
-Make sure you have Python installed on your system. You can download it from python.org.
+Make sure you have Python installed on your system. You can download it from [python.org](www.python.org).
 
 **Installation**
 1. Clone this repository to your local machine:
