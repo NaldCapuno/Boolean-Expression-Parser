@@ -7,6 +7,7 @@ This Python program simplifies boolean expressions using the SymPy library and p
 
 ## How to Use
 **Prerequisites**
+
 Make sure you have Python installed on your system. You can download it from python.org.
 
 **Installation**
@@ -21,6 +22,7 @@ pip install -r requirements.txt
 ```
 
 **Usage**
+
 Run the Parser.py script located in the BoolExpParser directory:
 ```bash
 python BoolExpParser/Parser.py
