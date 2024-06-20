@@ -13,7 +13,7 @@ Make sure you have Python installed on your system. You can download it from [py
 **Installation**
 1. Clone this repository to your local machine:
 ```bash
-https://github.com/NaldCapuno/Boolean-Expression-Parser.git
+git clone https://github.com/NaldCapuno/Boolean-Expression-Parser.git
 ```
 
 2. Open the repository folder and install the required dependencies:
