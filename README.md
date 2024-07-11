@@ -8,12 +8,12 @@ This Python program simplifies boolean expressions using the SymPy library and p
 ## How to Use
 **Prerequisites**
 
-Make sure you have Python installed on your system. You can download it from python.org.
+Make sure you have Python installed on your system. You can download it from [python.org](www.python.org).
 
 **Installation**
 1. Clone this repository to your local machine:
 ```bash
-git clone https://github.com/your-username/boolean-expression-simplifier.git
+git clone https://github.com/NaldCapuno/Boolean-Expression-Parser.git
 ```
 
 2. Open the repository folder and install the required dependencies:
@@ -30,5 +30,9 @@ python BoolExpParser/Parser.py
 
 This will launch the Tkinter GUI. Enter your boolean expression in the input field and click the "Simplify" button to see the simplified result.
 
-**Example**
+## Sample Output
 For example, if you input the expression (A & B) | (A & ~B), the program will simplify it to just A.
+
+**Screenshot**
+
+![GUI Screenshot](images/gui-screenshot.png)
