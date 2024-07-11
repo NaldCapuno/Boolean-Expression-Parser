@@ -73,6 +73,7 @@ def parse_expression():
 if __name__ == "__main__":
     main = tk.Tk()
     main.title("Boolean Expression Parser")
+    main.resizable(False, False)
 
     entry_label = tk.Label(main, text="Expression: ")
     entry_label.grid(column=0, row=0, padx=10, pady=10)
@@ -86,7 +87,7 @@ if __name__ == "__main__":
     result_label = tk.Label(main, text="Result: ")
     result_label.grid(column=0, row=2, columnspan=3, padx=10)
 
-    result = tk.Text(main, width=36, height=1, state='disabled')
+    result = tk.Text(main, width=42, height=1, state='disabled', font=('Arial', 10))
     result.grid(column=0, row=3, columnspan=3, padx=10, pady=10)
 
     main.mainloop()
