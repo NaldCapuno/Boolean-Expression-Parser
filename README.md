@@ -35,4 +35,5 @@ For example, if you input the expression (A & B) | (A & ~B), the program will si
 
 **Screenshot**
 
-![GUI Screenshot](images/gui-screenshot.png)
+![gui-screenshot](https://github.com/user-attachments/assets/40dd2137-07ad-4648-9179-51e1316ba0e7)
+
